@@ -22,3 +22,9 @@ Plot the ROC Curves
 \examples{
 
 }
+\seealso{
+h2o.plotLift(), h2o.plotVarImp()
+}
+\author{
+Elías Alegría <elias.alegria@ug.uchile.cl>
+}

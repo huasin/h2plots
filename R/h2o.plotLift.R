@@ -4,7 +4,7 @@
 #' @author Elías Alegría <elias.alegria@ug.uchile.cl>
 #' @param models list of h2o models class H2OBinomialModel
 #' @param newdata dataframe class H2OFrame
-#' @param xval if TRUE plot the ROC Curves on cross validation
+#' @param xval if TRUE plot the Lift Curves on cross validation
 #'
 #' @return ggplot graph
 #' @export
