@@ -1,6 +1,6 @@
 Package: h2plots
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Version: 0.1.2.0
 Authors@R: 
     person(given = "First",
            family = "Last",
