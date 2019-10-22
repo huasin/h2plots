@@ -11,7 +11,37 @@
 #'
 #' @seealso h2o.plotLift(), h2o.plotVarImp()
 #' @examples
+#' # Initialize h2o
+#' h2o.init(min_mem_size = '1G', max_mem_size = '4G')
 #'
+#' # Read the data
+#' prostate <- h2o.uploadFile(path = system.file("extdata", "prostate.csv", package = "h2o"),
+#'                            destination_frame = "prostate.hex")
+#'
+#' # Rename target for binomial clasification
+#' prostate[,"CAPSULE"] <- h2o.ifelse(prostate[,"CAPSULE"] == 1, 'TRUE', 'FALSE')
+#'
+#' # Split the data
+#' split_h2o <- h2o.splitFrame(prostate, ratios = .7, destination_frames = c('train','test'))
+#' train <- split_h2o[[1]]
+#' test  <- split_h2o[[2]]
+#'
+#' # Train models
+#' y = "CAPSULE"
+#' x = c("AGE", "RACE", "PSA", "VOL", "GLEASON")
+#'
+#' drf <- h2o.randomForest(y = y, x = x, training_frame = train)
+#' glm <- h2o.glm(y = y, x = x, training_frame = train, family = "binomial")
+#' gbm <- h2o.gbm(y = y, x = x, training_frame = train)
+#'
+#' # List of models
+#' models <- list(GLM = glm, DRF = drf, GBM = gbm)
+#'
+#' # Let's Plot ROC Curves
+#' h2plots::h2o.plotROC(models, test)
+#'
+#' # Finish H2O
+#' h2o.shutdown()
 
 
 
